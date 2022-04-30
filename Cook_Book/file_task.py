@@ -16,11 +16,11 @@ def file_processing(file_name: str, mode = 'r', encoding = 'utf-8', data: str ='
                 added_ingredient = dict()
                 ingredient = temp_list[i + j].split(" | ")
                 added_ingredient['ingredient_name'] = ingredient[0]
-                added_ingredient['quantity'] = ingredient[1]
+                added_ingredient['quantity'] = int(ingredient[1])
                 added_ingredient['measure'] = ingredient[2]
                 item.append(added_ingredient)
             cook_book[key] = item
-    # print(cook_book)
+    print(cook_book)
     return cook_book
 
 def take_order():
