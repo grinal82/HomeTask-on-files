@@ -5,7 +5,7 @@ def file_processing(file_name: str, mode = 'r', encoding = 'utf-8', data: str ='
     temp_list = []
     with open(file_name, mode, encoding = encoding) as file:
         for line in file:
-            line = line.strip()
+            line = line.strip().lower()
             temp_list.append(line)
             
     for i in range(len(temp_list)):
@@ -20,9 +20,9 @@ def file_processing(file_name: str, mode = 'r', encoding = 'utf-8', data: str ='
                 added_ingredient['measure'] = ingredient[2]
                 item.append(added_ingredient)
             cook_book[key] = item
-    print(cook_book)
+    print(f'Кулинарная книга: \n{cook_book}')
     return cook_book
-
+print()
 def take_order():
     dishes = input('Введите через запятую заказываемые блюда в расчете на одного гостя:').split(', ')
     person_count = int(input('Введите количество гостей:'))
@@ -39,7 +39,7 @@ def get_shop_list_by_dishes(dishes, person_count):
                 ingredients_needed[ingredient['ingredient_name']]['quantity'] = {
                     ingredients_needed[ingredient['ingredient_name']]['quantity']
                     +(ingredient['quantity']*person_count)}
-    return print(ingredients_needed)
+    return print(f'\n Список ингредиентов для выбранных блюд: {ingredients_needed}')
 
 def main():
     take_order()
